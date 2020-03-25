@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <bean id="befterlog" class="com.hai.log.BeforeLog"/>
+    <bean id="afterlog" class="com.hai.log.AfterLog"/>
+    <bean id="UserviceImpl" class="com.hai.service.UserviceImpl"/>
+    <bean id="mslog" class="com.hai.diy.msgLog"/>
+    <bean id="annottation" class="com.hai.diy.annotationPointcut"/>
+
+<!--开启注解支持！ jdk代理默认proxy-target-class="false" cglib代理(proxy-target-class="true")-->
+    <aop:aspectj-autoproxy/>
+
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="poincut" expression="execution(* com.hai.service.UserviceImpl.*(..))"/>-->
+<!--        <aop:advisor advice-ref="befterlog" pointcut-ref="poincut"/>-->
+<!--        <aop:advisor advice-ref="afterlog" pointcut-ref="poincut"/>-->
+
+<!--    </aop:config>-->
+
+<!--方式二：自定义类-->
+<!--    <aop:config>-->
+
+<!--        <aop:aspect ref="mslog">-->
+<!--&lt;!&ndash;            切入点&ndash;&gt;-->
+
+<!--            <aop:pointcut id="point" expression="execution(* com.hai.service.UserviceImpl.*(..))"/>-->
+<!--&lt;!&ndash;            通知&ndash;&gt;-->
+<!--            <aop:before method="befter" pointcut-ref="point"/>-->
+<!--            <aop:after method="after" pointcut-ref="point"/>-->
+
+<!--        </aop:aspect>-->
+
+
+<!--    </aop:config>-->
+
+
+</beans>
